@@ -1,21 +1,36 @@
-import React, {useState} from 'react';
-import {Alert, Image, StyleSheet, View} from 'react-native';
-import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
-// import {RoundedButton} from './src/components/RoundedButton';
-// import Swiper from 'react-native-swiper';
+import React from 'react';
 
-import Card from "./src/components/Card";
-import ViewImageScreen from './src/components/ViewImageScreen';
-import WelcomeScreen from "./src/components/WelcomeScreen";
-import ListingDetailsScreen from "./src/screens/ListingDetailsScreen"
-import MessagesScreen from './src/screens/MessagesScreen';
+
+
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
 export default function App() {
-  // return <WelcomeScreen />;
-  return <MessagesScreen />
+  
+  function handelPress(params) {
+    return console.log("fgfhgfh")
+  }
+ 
+
+ return (
+    <View style={stylea.container}>
+      <Text onPress={handelPress}>Hello React Natic</Text>
+      <TouchableOpacity onPress={handelPress}>
+        <Image
+          source={{
+            width: 200,
+            height: 200,
+            uri: 'https://picsum.photos/200/300',
+          }}
+        />
+      </TouchableOpacity>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-  Container: {
-
+const stylea = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
