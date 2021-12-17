@@ -9,13 +9,14 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from './app/components/AppButton';
 import Card from './app/components/Card';
 import ListingDetailsScreen from './app/screen/ListingDetailsScreen';
+import MessagesScreen from './app/screen/MessagesScreen';
 // icon usage <Icon name="email" size={30} color="blue" />
 
 export default function App() {
-
+    
   return (
 
-<ViewImageScreen />
+<MessagesScreen />
 
 );
 }
