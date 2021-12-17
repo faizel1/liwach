@@ -6,15 +6,18 @@ import ViewImageScreen from './app/screen/ViewImageScreen';
 import WellcomeScreen from './app/screen/WellcomeScreen';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import AppButton from './app/components/AppButton';
+import Card from './app/components/Card';
+import ListingDetailsScreen from './app/screen/ListingDetailsScreen';
+// icon usage <Icon name="email" size={30} color="blue" />
 
 export default function App() {
 
   return (
-    <View style={styles.container}>
 
-<Icon name="email" size={30} color="blue" />
-    </View>
-  );
+<ViewImageScreen />
+
+);
 }
 
 const styles = StyleSheet.create({
