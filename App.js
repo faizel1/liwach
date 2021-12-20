@@ -1,33 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {
-  ImageBackground,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import AppText from './app/components/AppText';
-import ViewImageScreen from './app/screen/ViewImageScreen';
-import WellcomeScreen from './app/screen/WellcomeScreen';
-
-import AppButton from './app/components/AppButton';
-import Card from './app/components/Card';
-import ListingDetailsScreen from './app/screen/ListingDetailsScreen';
-
-import MessagesScreen from './app/screen/MessagesScreen';
+import {TextInput, Switch, Text} from 'react-native';
+import AppPicker from './app/components/AppPicker';
+import AppTextInput from './app/components/AppTextInput';
 import Screen from './app/components/Screen';
-import Icon from './app/components/Icon';
-import ListItem from './app/components/ListItem';
-import AccountScreen from './app/components/AccountScreen';
-import ListingScreen from './app/screen/ListingScreen';
-// icon usage <Icon name="email" size={30} color="blue" />
 
 export default function App() {
+  const [isNew, setIsNew] = useState(false);
+const categories=[
+  {label:"furn1", value:1},
+  {label:"furn2", value:2},
+  {label:"furn3", value:3},
+  {label:"furn4", value:4},
+  {label:"furn5", value:5},
+]
   return (
-<ListingScreen />
+    <Screen>
+      <AppPicker items={categories} icon="apps" placeholder="Category" />
+      <AppTextInput icon="email" placeholder="email" />
+    </Screen>
   );
 }
-
-
