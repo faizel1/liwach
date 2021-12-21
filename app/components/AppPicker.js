@@ -17,7 +17,7 @@ import AppText from './AppText';
 import PickerItem from './PickerItem';
 import Screen from './Screen';
 
-export default function AppPicker({icon, placeholder, items}) {
+export default function AppPicker({icon,onSelectedItem,selectedItem, placeholder, items}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -32,8 +32,9 @@ export default function AppPicker({icon, placeholder, items}) {
               size={20}
             />
           )}
-          <AppText style={styles.text}>{placeholder}</AppText>
+          <AppText style={styles.text}>{ selectedItem? selectedItem.label: placeholder}</AppText>
           <MatIcon
+          
             name="chevron-down"
             color={DefaultStyles.colors.medium}
             size={20}
@@ -42,15 +43,21 @@ export default function AppPicker({icon, placeholder, items}) {
       </TouchableNativeFeedback>
 
       <Modal visible={modalVisible} animationType="slide">
+        <Button title="close" onPress={() => setModalVisible(false)} />
+
         <FlatList
           data={items}
           keyExtractor={item => item.value.toString()}
           renderItem={({item}) => (
-            <PickerItem label={item.label} onPress={() => console.log(item)} />
-            )}
+            <PickerItem 
+            label={item.label} 
+            onPress={() =>{
+              setModalVisible(false)
+              onSelectedItem(item)
+            }} />
+          )}
         />
       </Modal>
-            <Button title="close" onPress={() => setModalVisible(false)} />
     </>
   );
 }
