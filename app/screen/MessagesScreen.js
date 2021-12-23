@@ -11,14 +11,14 @@ import Screen from '../components/Screen';
 const initialMessages = [
   {
     id: 1,
-    title: 'T1',
-    description: 'D1',
+    title: 'T1 jgkldfjglkfdjglkdfjglfdjgfjglkfdjg',
+    description: 'D1gsdlkgjlkgjlkfjglkfjglkfjglkfjglkjglkfjglkfdjglkfjglkfdjglkfjgkfdglkfg fgjflkgjlfdkg fdgjflg',
     image: require('../assets/chim.png'),
   },
   {
     id: 2,
-    title: 'T2',
-    description: 'D2',
+    title: "hjkdfhkjfhkdjhfkjdhfkd",
+    description: 'djsfsdfjkhdkjfhdkjfhdkjfhjdksfhjksdhfkjdshfkjhjdshngfhgohn gklsdjgjgkjglkjlkgjgingkglkg',
     image: require('../assets/couch.jpg'),
   },
 ];
