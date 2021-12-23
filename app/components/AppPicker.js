@@ -20,6 +20,7 @@ import Screen from './Screen';
 export default function AppPicker({
   icon,
   onSelectedItem,
+  PickerItemComponent = PickerItem,
   selectedItem,
   placeholder,
   items,
@@ -43,7 +44,7 @@ export default function AppPicker({
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
-          
+
           <MatIcon
             name="chevron-down"
             color={DefaultStyles.colors.medium}
@@ -59,7 +60,8 @@ export default function AppPicker({
           data={items}
           keyExtractor={item => item.value.toString()}
           renderItem={({item}) => (
-            <PickerItem
+            <PickerItemComponent
+              item={item}
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
@@ -86,11 +88,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignSelf: 'center',
   },
-  placeholder:{
-    color:DefaultStyles.colors.medium,
-    flex:1,
-  }
-  ,
+  placeholder: {
+    color: DefaultStyles.colors.medium,
+    flex: 1,
+  },
   text: {
     flex: 1,
   },

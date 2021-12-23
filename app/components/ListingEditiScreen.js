@@ -46,6 +46,7 @@ export default function ListingEditiScreen() {
         <AppFormPicker
           items={ccategories}
           name="category"
+          PickerItemComponent={CategoryPickerItem}
           placeholder="Category"
         />
         <AppFormField

@@ -11,14 +11,14 @@ import Screen from '../components/Screen';
 const initialMessages = [
   {
     id: 1,
-    title: 'T1 jgkldfjglkfdjglkdfjglfdjgfjglkfdjg',
-    description: 'D1gsdlkgjlkgjlkfjglkfjglkfjglkfjglkjglkfjglkfdjglkfjglkfdjglkfjgkfdglkfg fgjflkgjlfdkg fdgjflg',
+    title: 'Feysel AKmel',
+    description: 'Do you know what Rock said ,do u ask who he is he is Dawayne  ohh forgot his last name',
     image: require('../assets/chim.png'),
   },
   {
     id: 2,
-    title: "hjkdfhkjfhkdjhfkjdhfkd",
-    description: 'djsfsdfjkhdkjfhdkjfhdkjfhjdksfhjksdhfkjdshfkjhjdshngfhgohn gklsdjgjgkjglkjlkgjgingkglkg',
+    title: "The Rock",
+    description: 'you are not tired, You are not Just inspired',
     image: require('../assets/couch.jpg'),
   },
 ];

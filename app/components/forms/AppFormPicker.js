@@ -5,7 +5,12 @@ import AppPicker from '../AppPicker';
 import ErrorMessage from './ErrorMessage';
 import {StyleSheet, Text, View} from 'react-native';
 
-export default function AppFormPicker({items, name, placeholder}) {
+export default function AppFormPicker({
+  items,
+  name,
+  PickerItemComponent,
+  placeholder,
+}) {
   const {errors, setFieldValue, touched, values} = useFormikContext();
 
   return (
@@ -13,6 +18,7 @@ export default function AppFormPicker({items, name, placeholder}) {
       <AppPicker
         items={items}
         onSelectedItem={item => setFieldValue(name, item)}
+        PickerItemComponent={PickerItemComponent}
         placeholder={placeholder}
         selectedItem={values[name]}
       />
