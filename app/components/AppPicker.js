@@ -17,7 +17,13 @@ import AppText from './AppText';
 import PickerItem from './PickerItem';
 import Screen from './Screen';
 
-export default function AppPicker({icon,onSelectedItem,selectedItem, placeholder, items}) {
+export default function AppPicker({
+  icon,
+  onSelectedItem,
+  selectedItem,
+  placeholder,
+  items,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -32,9 +38,13 @@ export default function AppPicker({icon,onSelectedItem,selectedItem, placeholder
               size={20}
             />
           )}
-          <AppText style={styles.text}>{ selectedItem? selectedItem.label: placeholder}</AppText>
-          <MatIcon
+          {selectedItem ? (
+            <AppText style={styles.text}>{(selectedItem, label)}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
           
+          <MatIcon
             name="chevron-down"
             color={DefaultStyles.colors.medium}
             size={20}
@@ -49,12 +59,13 @@ export default function AppPicker({icon,onSelectedItem,selectedItem, placeholder
           data={items}
           keyExtractor={item => item.value.toString()}
           renderItem={({item}) => (
-            <PickerItem 
-            label={item.label} 
-            onPress={() =>{
-              setModalVisible(false)
-              onSelectedItem(item)
-            }} />
+            <PickerItem
+              label={item.label}
+              onPress={() => {
+                setModalVisible(false);
+                onSelectedItem(item);
+              }}
+            />
           )}
         />
       </Modal>
@@ -75,6 +86,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignSelf: 'center',
   },
+  placeholder:{
+    color:DefaultStyles.colors.medium,
+    flex:1,
+  }
+  ,
   text: {
     flex: 1,
   },
