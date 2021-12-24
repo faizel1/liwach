@@ -15,11 +15,12 @@ import MatIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DefaultStyles from '../config/style';
 import AppText from './AppText';
 import PickerItem from './PickerItem';
-import Screen from './Screen';
 
 export default function AppPicker({
   icon,
+  numberOfColumns = 1,
   onSelectedItem,
+
   PickerItemComponent = PickerItem,
   selectedItem,
   placeholder,
@@ -59,6 +60,7 @@ export default function AppPicker({
         <FlatList
           data={items}
           keyExtractor={item => item.value.toString()}
+          numColumns={numberOfColumns}
           renderItem={({item}) => (
             <PickerItemComponent
               item={item}
