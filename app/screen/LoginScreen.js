@@ -1,8 +1,4 @@
 
-
-
-
-
 import React from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import Screen from '../components/Screen';
@@ -16,14 +12,26 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password'),
 });
 
-export default function LoginScreen() {
+
+
+export default function LoginScreen({navigation}) {
+const handelLogin=()=>{
+  navigation.navigate("ListingScreen")
+}
+
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require('../assets/logo.png')} />
 
       <AppForm
         initialValues={{email: '', password: ''}}
-        onSubmit={values => console.log(values)}
+        onSubmit={
+          values => {
+            handelLogin()
+          }
+        
+          
+        }
         validationSchema={validationSchema}>
                 
             <AppFormField
@@ -46,7 +54,7 @@ export default function LoginScreen() {
               textContentType="password"
               />
 
-            <SubmitButton title="LOGIN" />
+            <SubmitButton title="LOGIN"  />
               </AppForm>
          
             </Screen>
@@ -58,10 +66,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     alignSelf: 'center',
     marginTop: 50,
     marginBottom: 20,
+    borderRadius:50
   },
 });

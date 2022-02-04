@@ -4,13 +4,15 @@ import AppText from '../components/AppText';
 import ListItem from '../components/ListItem';
 import colors from '../config/colors';
 
-export default function ListingDetailsScreen() {
+export default function ListingDetailsScreen({route,navigation}) {
+  const { item } = route.params;
+
   return (
     <View>
-      <Image style={styles.image} source={require('../assets/chim.png')} />
+      <Image style={styles.image} source={item.image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>Red jac for sale</AppText>
-        <AppText style={styles.price}>$4546</AppText>
+        <AppText style={styles.price}>{item.price}</AppText>
 
         <View style={styles.userContainer} >
           <ListItem
