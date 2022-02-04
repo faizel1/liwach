@@ -1,10 +1,11 @@
 
 import React from 'react';
-import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import Screen from '../components/Screen';
 import * as Yup from 'yup';
 
-import {AppForm,AppFormField,SubmitButton} from "../components/forms"
+import { AppForm, AppFormField, SubmitButton } from "../components/forms"
+import colors from '../config/colors';
 
 
 const validationSchema = Yup.object().shape({
@@ -14,50 +15,57 @@ const validationSchema = Yup.object().shape({
 
 
 
-export default function LoginScreen({navigation}) {
-const handelLogin=()=>{
-  navigation.navigate("ListingScreen")
-}
+export default function LoginScreen({ navigation }) {
+  const handelLogin = () => {
+    navigation.navigate("ListingScreen")
+  }
 
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require('../assets/logo.png')} />
 
       <AppForm
-        initialValues={{email: '', password: ''}}
+        initialValues={{ email: '', password: '' }}
         onSubmit={
           values => {
             handelLogin()
           }
-        
-          
+
+
         }
         validationSchema={validationSchema}>
-                
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="email"
-              keyboardType="email-address"
-              name="email"
-              placeholder="Email"
-              textContentType="emailAddress"
-              />
 
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="lock"
-              name="password"
-              placeholder="Password"
-              secureTextEntry
-              textContentType="password"
-              />
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="email"
+          keyboardType="email-address"
+          name="email"
+          placeholder="Email"
+          textContentType="emailAddress"
+        />
 
-            <SubmitButton title="LOGIN"  />
-              </AppForm>
-         
-            </Screen>
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+        />
+
+        <SubmitButton title="LOGIN" />
+      </AppForm>
+      <Text style={{textAlign:"center"}}>
+        Don't have an Account ?{' '}
+        <Text
+          style={{ color:colors.primary }}
+          onPress={() => navigation.navigate('RegisterScreen')}>
+          Register Here
+        </Text>
+      </Text>
+    </Screen>
   );
 }
 
@@ -71,6 +79,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 50,
     marginBottom: 20,
-    borderRadius:50
+    borderRadius: 50
   },
 });

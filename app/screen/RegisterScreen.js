@@ -5,17 +5,20 @@ import Screen from '../components/Screen';
 import * as Yup from 'yup';
 
 import { AppForm, AppFormField, SubmitButton } from "../components/forms"
+import colors from '../config/colors';
 
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
+  phone: Yup.string().required().min(4).label('Phone'),
+  full_name: Yup.string().required().min(4).label('Full Name'),
   password: Yup.string().required().min(4).label('Password'),
 });
 
 
 
-export default function RegisterScreen() {
-  const handelLogin=()=>{
+export default function RegisterScreen({navigation}) {
+  const handelRegister=()=>{
     navigation.navigate("ListingScreen")
   }
 
@@ -24,10 +27,10 @@ export default function RegisterScreen() {
       <Image style={styles.logo} source={require('../assets/logo.png')} />
 
       <AppForm
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '',phone:'',full_name:'' }}
         onSubmit={
           values => {
-            handelLogin()
+            handelRegister()
           }
 
 
@@ -39,9 +42,8 @@ export default function RegisterScreen() {
           autoCorrect={false}
           icon="account"
           keyboardType="email-address"
-          name="email"
+          name="full_name"
           placeholder="Full Name"
-          textContentType=""
         />
 
         <AppFormField
@@ -49,9 +51,8 @@ export default function RegisterScreen() {
           autoCorrect={false}
           icon="phone"
           keyboardType="phone-pad"
-          name="email"
+          name="phone"
           placeholder="Phone Number"
-          textContentType="emailAddress"
         />
 
         <AppFormField
@@ -76,7 +77,14 @@ export default function RegisterScreen() {
 
         <SubmitButton title="Register" />
       </AppForm>
-
+      <Text style={{textAlign:"center"}}>
+        Don you have an Account ?{' '}
+        <Text
+          style={{ color:colors.primary }}
+          onPress={() => navigation.navigate('LoginScreen')}>
+          Login
+        </Text>
+      </Text>
     </Screen>
   );
 }

@@ -37,7 +37,7 @@ export default function ListingScreen({ navigation }) {
             image={item.image}
             onPress={() => {
               navigation.navigate("ListingDetailsScreen", {
-         item
+                item
               })
 
             }

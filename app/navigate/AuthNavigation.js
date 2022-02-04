@@ -19,15 +19,23 @@ function AuthNavigation() {
         <NavigationContainer>
 
             <Stack.Navigator             >
-                <Stack.Screen name="ListingScreen" component={ListingScreen} />
                 <Stack.Screen
                     options={{
                         headerShown: false
                     }}
                     name="Home" component={WellcomeScreen} />
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-                    <Stack.Screen name="ListingDetailsScreen" component={ListingDetailsScreen} />
+                <Stack.Screen
+                    options={{
+                        headerShown: false
+                    }}
+                    name="LoginScreen" component={LoginScreen} />
+                <Stack.Screen
+                    options={{
+                        headerShown: false
+                    }}
+                    name="RegisterScreen" component={RegisterScreen} />
+                <Stack.Screen name="ListingScreen" component={ListingScreen} />
+                <Stack.Screen name="ListingDetailsScreen" component={ListingDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
 
