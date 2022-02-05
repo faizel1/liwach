@@ -30,6 +30,7 @@ const navigator=useNavigation();
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
+
           title="Feysel Akmel"
           subTitle="faizfeysel@gmail.com"
           image={require('../assets/chim.png')}
@@ -45,7 +46,7 @@ const navigator=useNavigation();
 
           renderItem={({ item }) => (
             <ListItem
-            onPress={()=>{navigator.navigate("Home")}}
+            onPress={()=>{navigator.navigate("MessagesScreen")}}
 
               title={item.title}
               IconComponent={
