@@ -15,8 +15,23 @@ const listing = [
   {
     id: 2,
     title: 'Chim for Sale',
-    price: 100,
+    price: 1000,
     image: require('../assets/chim.png'),
+  },  {
+    id: 3,
+    title: 'Fish for Sale',
+    price: 100,
+    image: require('../assets/fish.jpg'),
+  },  {
+    id: 4,
+    title: 'Couch For Sale',
+    price: 600,
+    image: require('../assets/couch.jpg'),
+  },  {
+    id: 5,
+    title: 'Resort Trip',
+    price: 300,
+    image: require('../assets/mountain.png'),
   },
 ];
 

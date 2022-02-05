@@ -9,18 +9,23 @@ import AppTextInput from './app/components/AppTextInput';
 import ListItem from './app/components/ListItem';
 import Screen from './app/components/Screen';
 import LoginScreen from './app/screen/LoginScreen';
-import AuthNavigation from "./app/navigate/AuthNavigation";
 import MessagesScreen from "./app/screen/MessagesScreen";
 import ListingScreen from "./app/screen/ListingScreen";
-
+import AuthNavigation from './app/navigation/AuthNavigation';
 import ListingEditingScreen from "./app/components/ListingEditingScreen";
+import AccountScreen from './app/components/AccountScreen';
+import AppNavigator from './app/navigation/AppNavigator';
 export default function App() {
 
 
   return (
     <>
-    {/* <MessagesScreen /> */}
-    <AuthNavigation />
+      {/* <MessagesScreen /> */}
+      <NavigationContainer>
+
+        <AuthNavigation />
+      </NavigationContainer>
+
     </>
   );
 }

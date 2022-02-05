@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import colors from '../config/colors';
 import Icon from './Icon';
 import ListItem from './ListItem';
@@ -23,6 +24,8 @@ const menuItems = [
   },
 ];
 export default function AccountScreen() {
+const navigator=useNavigation();
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -38,13 +41,15 @@ export default function AccountScreen() {
           data={menuItems}
           keyExtractor={menuItem => menuItem.title}
 
-                      ItemSeparatorComponent={ListItemSeparator}
+          ItemSeparatorComponent={ListItemSeparator}
 
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <ListItem
+            onPress={()=>{navigator.navigate("Home")}}
+
               title={item.title}
               IconComponent={
-                
+
                 <Icon
                   name={item.icon.name}
                   backgroundColor={item.icon.backgroundColor}
@@ -54,16 +59,17 @@ export default function AccountScreen() {
           )}
         />
       </View>
-<ListItem 
-title="Log Out"
-IconComponent={
-    <Icon 
-    name ="logout"
-    backgroundColor='#ffe66d'
-    />
-}
+      <ListItem
+        title="Log Out"
+        onPress={()=>{navigator.navigate("LoginScreen")}}
+        IconComponent={
+          <Icon
+            name="logout"
+            backgroundColor='#ffe66d'
+          />
+        }
 
-/>
+      />
     </Screen>
   );
 }
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 20,
   },
-  screen:{
-      backgroundColor:colors.light
+  screen: {
+    backgroundColor: colors.light
   }
 });

@@ -11,7 +11,7 @@ export default function ListingDetailsScreen({route,navigation}) {
     <View>
       <Image style={styles.image} source={item.image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red jac for sale</AppText>
+        <AppText style={styles.title}>{item.title}</AppText>
         <AppText style={styles.price}>{item.price}</AppText>
 
         <View style={styles.userContainer} >
