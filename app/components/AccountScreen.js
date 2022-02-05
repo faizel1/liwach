@@ -30,6 +30,7 @@ const navigator=useNavigation();
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
+            onPress={()=>{navigator.navigate("AccountDetail")}}
 
           title="Feysel Akmel"
           subTitle="faizfeysel@gmail.com"

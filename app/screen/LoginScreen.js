@@ -4,6 +4,8 @@ import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import Screen from '../components/Screen';
 import * as Yup from 'yup';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import { AppForm, AppFormField, SubmitButton } from "../components/forms"
 import colors from '../config/colors';
 
@@ -16,6 +18,8 @@ const validationSchema = Yup.object().shape({
 
 
 export default function LoginScreen({ navigation }) {
+  // const eye=passwordSecured?"eye-slash":"eye";
+
   const handelLogin = () => {
     navigation.navigate("ListingScreen")
   }
@@ -44,23 +48,28 @@ export default function LoginScreen({ navigation }) {
           placeholder="Email"
           textContentType="emailAddress"
         />
+        <View style={styles.inputView}>
 
-        <AppFormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="lock"
-          name="password"
-          placeholder="Password"
-          secureTextEntry
-          textContentType="password"
-        />
+          <AppFormField
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="lock"
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+            textContentType="password"
+
+          />
+          <Icon style={{alignSelf:"center"}} name={"eye"} color="dodgerblue" size={20} />
+        </View>
+
 
         <SubmitButton title="LOGIN" />
       </AppForm>
-      <Text style={{textAlign:"center"}}>
+      <Text style={{ textAlign: "center" }}>
         Don't have an Account ?{' '}
         <Text
-          style={{ color:colors.primary }}
+          style={{ color: colors.primary }}
           onPress={() => navigation.navigate('RegisterScreen')}>
           Register Here
         </Text>
@@ -80,5 +89,11 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 20,
     borderRadius: 50
+  }, inputView: {
+    
+    height: 80,
+
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

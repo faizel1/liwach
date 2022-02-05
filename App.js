@@ -15,6 +15,8 @@ import AuthNavigation from './app/navigation/AuthNavigation';
 import ListingEditingScreen from "./app/components/ListingEditingScreen";
 import AccountScreen from './app/components/AccountScreen';
 import AppNavigator from './app/navigation/AppNavigator';
+import AccountDetail from './app/screen/AccountDetail';
+import ImageUpload from './app/components/ImageUpload';
 export default function App() {
 
 
@@ -23,7 +25,7 @@ export default function App() {
       {/* <MessagesScreen /> */}
       <NavigationContainer>
 
-        <AuthNavigation />
+        <ImageUpload />
       </NavigationContainer>
 
     </>
