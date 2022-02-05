@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, {useState} from 'react';
 
 import {FlatList, StyleSheet} from 'react-native';
@@ -26,6 +27,8 @@ const initialMessages = [
 export default function MessagesScreen() {
   const [messages, setMessages] = useState(initialMessages);
  const [refreshing, setRefreshing] = useState(false) ;
+ const navigator=useNavigation();
+
   const handelDelete = message => {
     //first delete the message from the message
     // second call the server to delete the item
@@ -43,7 +46,11 @@ export default function MessagesScreen() {
               title={item.title}
               subTitle={item.description}
               image={item.image}
-              onPress={() => console.log('Message Selected', item)}
+              onPress={() => 
+                // console.log('Message Selected', item)
+            {navigator.navigate("ListingDetailsScreen",{item})}
+
+              }
               renderRightActions={() => (
                 <ListItemDeleteAction onPress={() => handelDelete(item)} />
               )}
