@@ -1,180 +1,90 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+    Alert,
+    Image,
+    StyleSheet,
+    PermissionsAndroid,
+    TouchableWithoutFeedback,
+    View,
+} from 'react-native';
+import MatIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
-import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
+import colors from '../config/colors';
 
-import * as ImagePicker from 'react-native-image-picker';
+export default function ImageInput() {
+const[imageUri,setUri]=useState(null);
 
-export default class ImageUpload extends React.Component {
+    useEffect(() => {
+        requestCameraPermission();
+    }, []);
 
-  constructor(props) {
-
-    super(props);
-
-    this.state = {
-
-      resourcePath: {},
-
+    const requestCameraPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: 'Cool Photo App Camera Permission',
+                    message:
+                        'Cool Photo App needs access to your camera ' +
+                        'so you can take awesome pictures.',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log('You can use the camera');
+            } else {
+                console.log('Camera permission denied');
+            }
+        } catch (err) {
+            console.warn(err);
+        }
     };
 
-  }
 
-  selectFile = () => {
 
-    var options = {
+    const selectImage = async () => {
+        try {
+            const result = await launchImageLibrary({
+                mediaType: 'photo',
+                quality: 0.5,
+            });
+            if (!result.didCancel) {
 
-      title: 'Select Image',
-
-      customButtons: [
-
-        { 
-
-          name: 'customOptionKey', 
-
-          title: 'Choose file from Custom Option' 
-
-        },
-
-      ],
-
-      storageOptions: {
-
-        skipBackup: true,
-
-        path: 'images',
-
-      },
-
+                console.log(result);
+                setUri(result.assets[0].uri);
+            }
+        } catch (error) {
+            console.log('error reading an image', error);
+        }
     };
-    ImagePicker.launchImageLibrary(options, res => {
-
-      console.log('Response = ', res);
-
-      if (res.didCancel) {
-
-        console.log('User cancelled image picker');
-
-      } else if (res.error) {
-
-        console.log('ImagePicker Error: ', res.error);
-
-      } else if (res.customButton) {
-
-        console.log('User tapped custom button: ', res.customButton);
-
-        alert(res.customButton);
-
-      } else {
-
-        let source = res;
-
-        this.setState({
-
-          resourcePath: source,
-
-        });
-
-      }
-
-    });
-
-  };
-
- 
-
-  render() {
 
     return (
+        <TouchableWithoutFeedback onPress={selectImage}>
+            <View style={styles.container}>
+                {!imageUri && <MatIcon color={colors.medium} name="camera" size={40} />}
+                {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
 
-      <View style={styles.container}>
-
-        <View style={styles.container}>
-
-          <Image
-
-            source={{
-
-              uri: 'data:image/jpeg;base64,' + this.state.resourcePath.data,
-
-            }}
-
-            style={{ width: 100, height: 100 }}
-
-          />
-
-          <Image
-
-            source={{ uri: this.state.resourcePath.uri }}
-
-            style={{ width: 200, height: 200 }}
-
-          />
-
-          <Text style={{ alignItems: 'center' }}>
-
-            {this.state.resourcePath.uri}
-
-          </Text>
-
-          <TouchableOpacity onPress={this.selectFile} style={styles.button}>
-
-              <Text style={styles.buttonText}>Select File</Text>
-
-          </TouchableOpacity>       
-
-        </View>
-
-      </View>
-
+            </View>
+        </TouchableWithoutFeedback>
     );
-
-  }
-
 }
 
- 
-
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.light,
+        alignItems: 'center',
+        borderRadius: 15,
+        height: 100,
+        width: 100,
+        justifyContent: 'center',
+        overflow: 'hidden',
+    },
 
-  container: {
-
-    flex: 1,
-
-    padding: 30,
-
-    alignItems: 'center',
-
-    justifyContent: 'center',
-
-    backgroundColor: '#fff'
-
-  },
-
-  button: {
-
-    width: 250,
-
-    height: 60,
-
-    backgroundColor: '#3740ff',
-
-    alignItems: 'center',
-
-    justifyContent: 'center',
-
-    borderRadius: 4,
-
-    marginBottom:12
-
-  },
-
-  buttonText: {
-
-    textAlign: 'center',
-
-    fontSize: 15,
-
-    color: '#fff'
-
-  }
-
+    image: {
+        width: '100%',
+        height: '100%',
+    },
 });

@@ -25,7 +25,8 @@ export default function App() {
       {/* <MessagesScreen /> */}
       <NavigationContainer>
 
-        <ImageUpload />
+      <ImageUpload />
+      <AccountDetail />
       </NavigationContainer>
 
     </>
